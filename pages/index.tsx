@@ -4,8 +4,8 @@ import AppBar from "../containers/AppBar/AppBar.component";
 import { StateContext, DispatchContext } from "../context/contextStore";
 import { useContext } from "react";
 import { useUser } from "../context/initialState";
-
-const App = () => {
+import Link from "next/link";
+const App = props => {
   const { userStore } = useContext(StateContext);
   const { auth, userId } = userStore;
   const dispatch = useContext(DispatchContext);
@@ -20,9 +20,19 @@ const App = () => {
   return (
     <React.Fragment>
       <button onClick={handleIncrease}>Increase</button>
-      <h1>{auth.toString() + "" + userId}</h1>
+      <h1>{JSON.stringify(props.message)}</h1>
+      <Link href="/task" passHref>
+        <a>task</a>
+      </Link>
     </React.Fragment>
   );
+};
+
+App.getInitialProps = async appContext => {
+  // calls page's `getInitialProps` and fills `appProps.pageProps`
+  // const appProps = await App.getInitialProps(appContext);
+  console.log("index");
+  return { message: "Logged in" };
 };
 
 export default App;

@@ -17,6 +17,8 @@ import Link from "next/link";
 import LoginButton from "../components/LoginButton";
 import { StateContext, DispatchContext } from "../context/contextStore";
 import { useForm } from "../utility/useForm";
+import { login } from "../context";
+import Head from "next/head";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -57,53 +59,63 @@ const Login = () => {
   }, [value.email]);
 
   return (
-    <Container maxWidth="xs">
-      <div className={classes.paper}>
-        <TextField
-          name="email"
-          value={value.email}
-          label="Email"
-          fullWidth
-          onChange={handleChange}
-        />
+  
+    <div>
+        <Head>
+        <title>Login</title>
+      </Head>
+      <Container maxWidth="xs">
+        <div className={classes.paper}>
+          <TextField
+            name="email"
+            value={value.email}
+            label="Email"
+            fullWidth
+            onChange={handleChange}
+          />
 
-        <TextField
-          name="password"
-          value={value.password}
-          label="Password"
-          fullWidth
-          onChange={handleChange}
-        />
+          <TextField
+            name="password"
+            value={value.password}
+            label="Password"
+            fullWidth
+            onChange={handleChange}
+          />
 
-        <LoginButton
-          variant="contained"
-          color="primary"
-          fullWidth
-          className={classes.submit}
-          email={value.email}
-          password={value.password}
-        >
-          Log in
-        </LoginButton>
+          <LoginButton
+            variant="contained"
+            color="primary"
+            fullWidth
+            className={classes.submit}
+            email={value.email}
+            password={value.password}
+          >
+            Log in
+          </LoginButton>
 
-        <Grid container>
-          <Grid item xs>
-            <Link href="#">
-              <Typography variant="body2" color="secondary">
-                {"Forgot password?"}
-              </Typography>
-            </Link>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#">
+                <a>
+                  <Typography variant="body2" color="secondary">
+                    {"Forgot password?"}
+                  </Typography>
+                </a>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/signup">
+                <a title="sign up">
+                  <Typography variant="body2" color="secondary">
+                    {"Don't have an account? Sign Up"}
+                  </Typography>
+                </a>
+              </Link>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Link href="/signup">
-              <Typography variant="body2" color="secondary">
-                {"Don't have an account? Sign Up"}
-              </Typography>
-            </Link>
-          </Grid>
-        </Grid>
-      </div>
-    </Container>
+        </div>
+      </Container>
+    </div>
   );
 };
 
