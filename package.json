@@ -1,18 +1,27 @@
 {
-  "name": "nextjs",
-  "version": "4.0.0",
+  "name": "chat",
+  "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@material-ui/core": "latest",
-    "clsx": "latest",
-    "next": "latest",
-    "prop-types": "latest",
-    "react": "latest",
-    "react-dom": "latest"
-  },
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "firebase": "^7.15.5",
+    "firebaseui": "^4.5.1",
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-firebaseui": "^4.1.0",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.0",
+    "typescript": "^3.9.6"
   }
 }
