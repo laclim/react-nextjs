@@ -1,35 +1,16 @@
 import { Typography, TextField, Button } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import firebase from "../../firebase";
-import "firebase/auth";
+
 import { useContextDispatch } from "../context";
 export default function Profile() {
   const [profile, setProfile] = useState({ phoneNumber: "", displayName: "" });
   const dispatch = useContextDispatch();
   useEffect(() => {
-    const user = firebase.auth().currentUser;
-    setProfile({
-      phoneNumber: user.phoneNumber,
-      displayName: user.displayName,
-    });
-    console.log(user);
+ 
   }, []);
 
   function handleSave() {
-    const user = firebase.auth().currentUser;
-    user
-      .updateProfile(profile)
-      .then(() => {
-        console.log("Save!");
-        dispatch({
-          type: "showSnackbar",
-          successMessage: "Successfully Saved!",
-        });
-        dispatch({ type: "updateProfile", displayName: profile.displayName });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    
   }
 
   return (

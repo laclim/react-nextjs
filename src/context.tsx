@@ -79,7 +79,7 @@ export default function Context({ children }) {
   const [state, dispatch] = useReducer(contextReducer, {
     count: 0,
     loggedIn: false,
-    mounted: false,
+    mounted: true,
     showSnackbar: false,
     successMessage: "",
     displayName: "",

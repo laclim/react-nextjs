@@ -7,13 +7,10 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useContextDispatch, useContextState } from "../context";
-import firebase from "../../firebase";
-import "firebase/auth";
-import "firebase/firestore";
+
 import Link from "next/link";
 import { Box, Container, Avatar, Fab, Menu, MenuItem } from "@material-ui/core";
-import Login from "../../pages/login";
-import Profile from "./Profile";
+
 import theme from "../theme";
 import { StyledLink } from "./StyledLink";
 
@@ -37,21 +34,7 @@ const SiteLayout = ({ children }) => {
   const dispatch = useContextDispatch();
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(
-      (user) => {
-        if (user) {
-          // User is signed in.
-          const displayName = user.displayName;
-          dispatch({ type: "login", displayName });
-        } else {
-          // No user is signed in.
-          console.log("no user logged in");
-        }
-        dispatch({ type: "mounted" });
-      },
-      // Prevent console error
-      (error) => console.log(error)
-    );
+   
   }, []);
 
   const { mounted } = useContextState();
@@ -61,16 +44,7 @@ const SiteLayout = ({ children }) => {
 
 const MenuBar = ({ children }) => {
   const handleLogout = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(function () {
-        console.log("Log out from firebase");
-        dispatch({ type: "logout" });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  
   };
   const dispatch = useContextDispatch();
   const { loggedIn, displayName } = useContextState();
